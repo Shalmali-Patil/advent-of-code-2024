@@ -1,0 +1,5 @@
+package com.adventofcode;
+
+public enum Direction {
+    UP, DOWN, LEFT, RIGHT, DIAGONAL_LEFT_TOP, DIAGONAL_LEFT_BOTTOM, DIAGONAL_RIGHT_TOP, DIAGONAL_RIGHT_BOTTOM;
+}
