@@ -28,8 +28,41 @@ public class CeresSearch {
         Integer count = cs.searchWord(matrix);
         System.out.println("Count: " + count);
 
+        Integer countOfXMAS = cs.countXMAS(matrix);
+        System.out.println("Count of X-MAS: " + countOfXMAS);
+
         sc.close();
         fis.close();
+    }
+
+    private Integer countXMAS(char[][] matrix) {
+        Integer count = 0;
+
+        int xCount = 0;
+        for(int i=1;i< matrix.length-1;i++) {
+            for(int j=1;j<matrix[i].length-1;j++) {
+                xCount = 0;
+                char c = matrix[i][j];
+                if(c == 'A') {
+                    if(matrix[i-1][j-1]=='M' && matrix[i+1][j+1]=='S') {
+                        xCount++;
+                    }
+                    if(matrix[i-1][j+1]=='M' && matrix[i+1][j-1]=='S') {
+                        xCount++;
+                    }
+                    if(matrix[i+1][j-1]=='M' && matrix[i-1][j+1]=='S') {
+                        xCount++;
+                    }
+                    if(matrix[i+1][j+1]=='M' && matrix[i-1][j-1]=='S') {
+                        xCount++;
+                    }
+                    if(xCount == 2) {
+                        count += 1;
+                    }
+                }
+            }
+        }
+        return count;
     }
 
     private Integer searchWord(char[][] matrix) {
